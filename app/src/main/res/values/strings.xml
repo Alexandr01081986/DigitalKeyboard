@@ -17,4 +17,6 @@
     <string name="Division">/</string>
     <string name="Even">=</string>
     <string name="Percent">%</string>
+    <string name="c">C</string>
+    <string name="del">Del</string>
 </resources>
