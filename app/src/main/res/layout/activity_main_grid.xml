@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/forcalculator"
     android:clickable="false"
     android:columnCount="4"
     android:orientation="horizontal"
@@ -13,6 +13,7 @@
         android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/CalcKeySquare"
         android:text="@string/c"
         android:textSize="@dimen/dimen"
         android:onClick="buttonClearClickListener"/>

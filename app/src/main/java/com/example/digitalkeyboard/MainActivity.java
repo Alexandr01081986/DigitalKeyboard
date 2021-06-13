@@ -1,7 +1,10 @@
 package com.example.digitalkeyboard;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-class Calculator extends AppCompatActivity {
+class Calculator<param> extends AppCompatActivity {
 
     public static final String NAME = "Calculator";
     public static final String FIRST = NAME + ".mFirst";
@@ -19,17 +22,26 @@ class Calculator extends AppCompatActivity {
     private static final String RESULT = NAME + ".mResult";
     private static final String TVRESULT = NAME + ".tvResult";
 
+    public static final String U_NAME = "our.prefix.user.name";
+
     private String mFirst;
     private String mSecond;
     private String tvResultText = "0";
     private char mOperation;
     private float mResult;
     TextView tvResult;
+    Intent mItMoveToTest;
+
+    private static final String NameSharedPreference = "CALC";
+    private static final String appTheme = "APP_THEME";
+    private Object SettingsActivity;
+    private String text;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(-1));
         setContentView(R.layout.activity_main);
 
         Button button1 = findViewById(R.id.button1);
@@ -72,11 +84,61 @@ class Calculator extends AppCompatActivity {
         buttonEven.setOnClickListener(buttonEvenClickListener);
         buttonPoint.setOnClickListener(buttonPointClickListener);
 
+        mItMoveToTest = new Intent(this, SettingsActivity.class);
+
+        Button btnMoveToTest = findViewById(R.id.btnMoveToTest);
+        btnMoveToTest.setOnClickListener(moveToTestClickListener);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e(NAME, "onActivityResult() ");
+        if (data != null && resultCode == RESULT_OK) {
+            recreate();
+        }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(NAME, "onStart() ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(NAME, "onRestart() ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(NAME, "onResume() ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(NAME, "onPause() ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(NAME, "onStop() ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(NAME, "onDestroy() ");
     }
 
     private void setTvResult() {
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle state) {
@@ -92,15 +154,21 @@ class Calculator extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
-        
+
         mFirst = state.getString(FIRST);
         mSecond = state.getString(SECOND);
         mOperation = state.getChar(OPERATION);
         mResult = state.getFloat(RESULT);
-        setResultText(state.getString(TVRESULT));
+        setTvResult(state.getString(TVRESULT));
     }
 
+    private final View.OnClickListener moveToTestClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+            startActivityForResult(mItMoveToTest, 1);
+        }
+    };
 
     private final View.OnClickListener buttonClearClickListener = new View.OnClickListener() {
         @Override
@@ -109,7 +177,7 @@ class Calculator extends AppCompatActivity {
             mSecond = "";
             mResult = 0f;
             mOperation = ' ';
-            setResultText("0");
+            setTvResult("0");
         }
     };
 
@@ -206,7 +274,7 @@ class Calculator extends AppCompatActivity {
 
             if (text.length() == 1) {
                 mFirst = "";
-                setResultText("0");
+                setTvResult("0");
             } else if (
                     text.charAt(text.length() - 1) != '+' && text.charAt(text.length() - 1) != '*' &&
                             text.charAt(text.length() - 1) != '/' && text.charAt(text.length() - 1) != '-'
@@ -220,11 +288,11 @@ class Calculator extends AppCompatActivity {
                         mSecond = mSecond.substring(0, mSecond.length() - 1);
                     }
                 }
-                setResultText(text.substring(0, text.length() - 1));
+                setTvResult(text.substring(0, text.length() - 1));
             } else {
                 mOperation = ' ';
                 mSecond = "";
-                setResultText(text.substring(0, text.length() - 1));
+                setTvResult(text.substring(0, text.length() - 1));
             }
         }
     };
@@ -255,44 +323,124 @@ class Calculator extends AppCompatActivity {
     private final View.OnClickListener buttonEvenClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            addCharToText();
-            switch (mOperation) {
-                case '+':
-                    mResult = Float.parseFloat(mFirst) + Float.parseFloat(mSecond);
-                    break;
-                case '-':
-                    mResult = Float.parseFloat(mFirst) - Float.parseFloat(mSecond);
-                    break;
-                case '*':
-                    mResult = Float.parseFloat(mFirst) * Float.parseFloat(mSecond);
-                    break;
-                case '/':
-                    mResult = Float.parseFloat(mFirst) / Float.parseFloat(mSecond);
-                    break;
-                default:
-                    mResult = 0;
+            if (mOperation == '!') return;
+            String resultText = "";
+            try {
+                if (!mFirst.equals("") && !mSecond.equals("")) {
+                    float first = Float.parseFloat(mFirst);
+                    float second = Float.parseFloat(mSecond);
+                    if (mOperation != ' ' && tvResultText.contains("=")) {
+                        first = mResult;
+                        mFirst = "" + mResult;
+                        setTvResult("" + mResult + mOperation + mSecond);
+                    }
+                    addCharToText(" = ");
+                    switch (mOperation) {
+                        case '+':
+                            mResult = first + second;
+                            break;
+                        case '-':
+                            mResult = first - second;
+                            break;
+                        case '*':
+                            mResult = first * second;
+                            break;
+                        case '/':
+                            if (mSecond.equals("0")) {
+                                throw new ArithmeticException("Деление на 0");
+                            }
+                            mResult = first / second;
+                            break;
+                        default:
+                            mResult = 0;
+                    }
+                    resultText = "" + mResult;
+                    if (resultText.equals("Infinity")) {
+                        throw new ArithmeticException("Превышение");
+                    }
+                    resultText = splitZero(resultText);
+                }
+                addCharToText(resultText);
+            } catch (Exception ex) {
+                addCharToText(" : " + ex.getMessage());
+                mOperation = '!';
             }
-
-            setResultText(String.format(Locale.getDefault(), "%f", mResult));
         }
     };
 
+    private void setTvResult(String s) {
+    }
+
+    private void addCharToText(String s) {
+    }
+
+    private String splitZero(String resultText) {
+        boolean exist0 = false;
+        if (resultText.contains(".") || resultText.contains(",")) {
+            exist0 = true;
+        }
+        while (exist0) {
+            if (resultText.charAt(resultText.length() - 1) == '0' && resultText.length() != 1) {
+                resultText = resultText.substring(0, resultText.length() - 1);
+            } else if (resultText.charAt(resultText.length() - 1) == ',' || resultText.charAt(resultText.length() - 1) == '.') {
+                resultText = resultText.substring(0, resultText.length() - 1);
+                exist0 = false;
+            } else {
+                exist0 = false;
+            }
+        }
+        return resultText;
+    }
+
     private void addCharToParam(String button) {
-        if (mOperation == ' ') {
-            mFirst += button;
+        if (tvResultText.contains("=")) {
+            initCalc();
+        }
+        if (mOperation == '!') {
+            return;
+        } else if (mOperation == ' ') {
+            if ((!button.equals(".") || !mFirst.contains(".")) && mFirst.length() < 15) {
+                if (mFirst.length() == 0 && button.equals(".")) button = "0" + button;
+                mFirst += button;
+                addCharToText(button);
+            }
         } else {
-            mSecond += button;
+            if ((!button.equals(".") || !mSecond.contains(".")) && mSecond.length() < 15) {
+                if (mSecond.length() == 0 && button.equals(".")) button = "0" + button;
+                mSecond += button;
+                addCharToText(button);
+            }
         }
 
-        addCharToText();
+        private void addCharToText (String button){
+            if (tvResult.getText() == "0") {
+                setTvResult(button);
+            } else {
+                setTvResult(tvResult.getText() + button);
+            }
+        }
+
+        private void setTvResult (String text){
+            tvResultText = text;
+            tvResult.setText(text);
+        }
+
     }
 
-    private void addCharToText() {
+    private void initCalc() {
+        mFirst = "";
+        mSecond = "";
+        mResult = 0f;
+        mOperation = ' ';
+        setTvResult("0");
     }
 
-    private void setResultText(String text) {
-        tvResultText = text;
-        tvResult.setText(text);
+    private int getAppTheme(int codeStyle) {
+        return SettingsActivity.codeStyleToStyleId(getCodeStyle(codeStyle));
     }
 
+    private int getCodeStyle(int codeStyle) {
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        return sharedPref.getInt(appTheme, codeStyle);
+    }
 }
