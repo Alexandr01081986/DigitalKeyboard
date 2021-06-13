@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Digital Keyboard</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_0">0</string>
+    <string name="Point">,</string>
+    <string name="Pros">+</string>
+    <string name="Con">-</string>
+    <string name="Multiplication">*</string>
+    <string name="Division">/</string>
+    <string name="Even">=</string>
+    <string name="Percent">%</string>
+    <string name="c">C</string>
+    <string name="del">Del</string>
+    <string name="editResultCalc">"0 "</string>
+    <string name="btnMoveToTest">Перейти в настройки</string>
+    <string name="loginName">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="material_black">Черная</string>
+    <string name="material_red">Красная</string>
+    <string name="material_default">Тема по умолчанию</string>
+    <string name="material_blue">Синяя</string>
+    <string name="not_name">Некорректные символы.</string>
+    <string name="weak_password">Кривой пароль</string>
+    <string name="tvSettingsCalc">Настройки темы калькулятора:</string>
+    <string name="btnSave">Сохранить настройки</string>
 </resources>
