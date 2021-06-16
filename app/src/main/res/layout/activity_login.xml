@@ -28,52 +28,20 @@
                 </androidx.core.widget.NestedScrollView>
             </TableRow>
         </TableLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/loginName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:errorEnabled="true"
-            tools:ignore="MissingClass">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/inputLoginName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/loginName"
-                android:inputType="textPersonName"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginName"
-            app:errorEnabled = "true"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/inputPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"/>
-        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@android:string/ok"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            android:text="ok"
             app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@android:string/cancel"
+            android:text="cancel"
             app:layout_constraintStart_toEndOf="@+id/buttonOk"
             app:layout_constraintTop_toBottomOf="@+id/password"
             app:layout_constraintEnd_toEndOf="parent"/>

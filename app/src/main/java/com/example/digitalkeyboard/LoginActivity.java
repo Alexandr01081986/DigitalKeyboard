@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Pattern;
 
+@SuppressWarnings("ALL")
 public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCompatActivity {
 
 
@@ -27,10 +28,6 @@ public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCo
     private static final int AppThemeMaterialDefault = 2;
     private static final int AppThemeMaterialBlue = 3;
 
-
-    Pattern checkLogin = Pattern.compile("^[A-Z][a-z]{2,}$");
-
-    Pattern checkPassword = Pattern.compile("^(?=^.{6,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$");
     private View item;
 
     @Override
@@ -39,77 +36,19 @@ public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCo
         setTheme(getAppTheme(R.style.MyCoolStyle));
         setContentView(R.layout.activity_login);
         initThemeChooser();
-        initList();
-        initTexts();
     }
 
-    private void initTexts() {
-        View login = findViewById(R.id.inputLoginName);
-        View password = findViewById(R.id.inputPassword);
-        final TextInputLayout layoutLogin = findViewById(R.id.loginName);
-        final TextInputLayout layoutPassword = findViewById(R.id.password);
-
-        login.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) return;
-                TextView tv = (TextView) v;
-                String value = tv.getText().toString();
-                if (checkLogin.matcher(value).matches()) {
-                    tv.setError(null);
-                } else {
-                    tv.setError(getString(R.string.not_name));
-                }
-            }
-        });
-
-        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) return;
-                TextView tv = (TextView) v;
-                String value = tv.getText().toString();
-                if (checkPassword.matcher(value).matches()) {
-                    layoutPassword.setError(null);
-                } else {
-                    layoutPassword.setError(getString(R.string.weak_password));
-                }
-            }
-        });
-    }
-
-    private void initList() {
-        LinearLayout layoutList = findViewById(R.id.layoutList);
-        LayoutInflater ltInflater = getLayoutInflater();
-
-        String[] versions = getResources().getStringArray(R.array.version_names);
-        TypedArray imgs = getResources().obtainTypedArray(R.array.version_logos);
-
-        for (int i = 0; i < versions.length; i++) {
-
-
-            TextView tv = item.findViewById(R.id.textAndroid);
-            String version = versions[i];
-            tv.setText(version);
-
-            AppCompatImageView imgLogo = item.findViewById(R.id.imageAndroid);
-            imgLogo.setImageResource(imgs.getResourceId(i, -1));
-
-            layoutList.addView(item);
-        }
-    }
-
-    // Инициализация радиокнопок
+    @SuppressWarnings("unchecked")
     private void initThemeChooser() {
         initRadioButton(findViewById(R.id.radioButtonMaterialBlack), AppThemeMaterialBlack);
         initRadioButton(findViewById(R.id.radioButtonMaterialBlue), AppThemeMaterialBlue);
         initRadioButton(findViewById(R.id.radioButtonMaterialRed), AppThemeMaterialRed);
         initRadioButton(findViewById(R.id.radioButtonMaterialDefault), AppThemeMaterialDefault);
         RadioGroup rg = findViewById(R.id.radioButtons);
-        ((MaterialRadioButton) rg.getChildAt(getCodeStyle(AppThemeMaterialBlack))).setChecked(true);
+        int codeToSave = 0;
+        ((com.google.android.material.radiobutton.MaterialRadioButton) rg.getChildAt(codeToSave)).setChecked(true);
     }
-
+    
 
     private void initRadioButton(View button, final int codeStyle) {
         button.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +70,6 @@ public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCo
         return sharedPref.getInt(AppTheme, codeStyle);
     }
 
-
     private void setAppTheme(int codeStyle) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
 
@@ -150,11 +88,6 @@ public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCo
                 return R.style.AppThemeDark;
             default:
                 return R.style.MyCoolStyle;
-        }
-    }
-
-    private class TextInputLayout {
-        public void setError(String string) {
         }
     }
 }

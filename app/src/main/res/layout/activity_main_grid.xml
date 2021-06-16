@@ -9,8 +9,9 @@
     android:orientation="horizontal"
     android:rowCount="5">
 
+    <!--suppress AndroidMissingOnClickHandler -->
     <Button
-        android:id="@+id/buttonClear"
+        android:id="@+id/butClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/CalcKeySquare"
@@ -19,7 +20,7 @@
         android:onClick="buttonClearClickListener"/>
 
     <Button
-        android:id="@+id/buttonDivision"
+        android:id="@+id/butDivision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Division"
@@ -27,7 +28,7 @@
         android:onClick="buttonDivisionClickListener"/>
 
     <Button
-        android:id="@+id/buttonMultiplication"
+        android:id="@+id/butMultiplication"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Multiplication"
@@ -35,7 +36,7 @@
         android:onClick="buttonMultiplicationClickListener"/>
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/butDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/del"
@@ -43,7 +44,7 @@
         android:onClick="buttonDeleteClickListener"/>
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/but7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_7"
@@ -51,7 +52,7 @@
         android:onClick="button7ClickListener"/>
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/but8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_8"
@@ -59,7 +60,7 @@
         android:onClick="button8ClickListener"/>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/but9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_9"
@@ -67,7 +68,7 @@
         android:onClick="button9ClickListener"/>
 
     <Button
-        android:id="@+id/buttonCon"
+        android:id="@+id/butCon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Con"
@@ -75,7 +76,7 @@
         android:onClick="buttonConClickListener"/>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/but4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_4"
@@ -83,7 +84,7 @@
         android:onClick="button4ClickListener"/>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/but5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_5"
@@ -91,7 +92,7 @@
         android:onClick="button5ClickListener"/>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/but6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_6"
@@ -99,7 +100,7 @@
         android:onClick="button6ClickListener"/>
 
     <Button
-        android:id="@+id/buttonPros"
+        android:id="@+id/butPros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Pros"
@@ -107,7 +108,7 @@
         android:onClick="buttonProsClickListener"/>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/but1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_1"
@@ -115,7 +116,7 @@
         android:onClick="button1ClickListener"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/but2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_2"
@@ -123,7 +124,7 @@
         android:onClick="button2ClickListener"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/but3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_3"
@@ -131,7 +132,7 @@
         android:onClick="button3ClickListener"/>
 
     <Button
-        android:id="@+id/buttonEven"
+        android:id="@+id/butEven"
         android:layout_width="wrap_content"
         android:layout_height="105dp"
         android:layout_row="3"
@@ -142,7 +143,7 @@
         android:onClick="buttonEvenClickListener"/>
 
     <Button
-        android:id="@+id/button0"
+        android:id="@+id/but0"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_columnSpan="2"
@@ -151,7 +152,7 @@
         android:onClick="button0ClickListener"/>
 
     <Button
-        android:id="@+id/buttonPoint"
+        android:id="@+id/butPoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Point"

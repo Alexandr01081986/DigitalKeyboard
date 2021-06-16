@@ -29,7 +29,8 @@
             android:id="@+id/radioButtonMaterialBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/material_black" />
+            android:text="@string/material_black"
+            tools:ignore="MissingClass" />
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonMaterialRed"
             android:layout_width="match_parent"

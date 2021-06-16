@@ -14,10 +14,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static final String NAME_ACTIVITY = "SettingsActivity";
 
-    // Имя настроек
+
     private static final String GenericPreference = "CALC";
     private static final String SettingsPreference = "SETTINGS";
-    // Имя параметра в настройках
+
     private static final String AppTheme = "APP_THEME";
     private static final int AppThemeMaterialBlack = 0;
     private static final int AppThemeMaterialRed = 1;
@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
             saveTheme(SettingsPreference, codeToSave);
             saveTheme(GenericPreference, codeToSave);
             Intent result = new Intent();
-            result.putExtra(CalcActivity.KEY_NAME, "ok");
+            result.putExtra(Calculator.U_NAME, "ok");
             setResult(RESULT_OK, result);
             finish();
         });
@@ -61,13 +61,13 @@ public class SettingsActivity extends AppCompatActivity {
         return codeStyleToStyleId(getCodeStyle(NameSharedPreference, codeStyle));
     }
 
-    // Чтение настроек, параметр «тема»
+
     private int getCodeStyle(String NameSharedPreference, int codeStyle) {
-        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);                        // Работаем через специальный класс сохранения и чтения настроек
-        return sharedPref.getInt(AppTheme, codeStyle);                                                                  //Прочитать тему, если настройка не найдена - взять по умолчанию
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        return sharedPref.getInt(AppTheme, codeStyle);
     }
 
-    // Сохранение настроек
+
     private void setAppTheme(int codeStyle) {
         codeToSave = codeStyle;
         saveTheme(SettingsPreference, codeToSave);
@@ -76,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void saveTheme(String NameSharedPreference, int codeStyle) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();                                                            // Настройки сохраняются посредством специального класса editor.
+        SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(AppTheme, codeStyle);
         editor.commit();
     }
@@ -107,7 +107,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void initRadioButton(View button, final int codeStyle) {
         button.setOnClickListener(v -> {
-            setAppTheme(codeStyle);                                                                                 // сохраним настройки
+            setAppTheme(codeStyle);
         });
     }
 }

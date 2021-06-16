@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+@SuppressWarnings("ALL")
 class Calculator<param> extends AppCompatActivity {
 
     public static final String NAME = "Calculator";
@@ -36,6 +37,8 @@ class Calculator<param> extends AppCompatActivity {
     private static final String appTheme = "APP_THEME";
     private Object SettingsActivity;
     private String text;
+    private Object but;
+    private String AppTheme;
 
 
     @Override
@@ -44,45 +47,45 @@ class Calculator<param> extends AppCompatActivity {
         setTheme(getAppTheme(-1));
         setContentView(R.layout.activity_main);
 
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        Button button4 = findViewById(R.id.button4);
-        Button button5 = findViewById(R.id.button5);
-        Button button6 = findViewById(R.id.button6);
-        Button button7 = findViewById(R.id.button7);
-        Button button8 = findViewById(R.id.button8);
-        Button button9 = findViewById(R.id.button9);
-        Button button0 = findViewById(R.id.button0);
-        Button buttonClear = findViewById(R.id.buttonClear);
-        Button buttonDivision = findViewById(R.id.buttonDivision);
-        Button buttonMultiplication = findViewById(R.id.buttonMultiplication);
-        Button buttonDelete = findViewById(R.id.buttonDelete);
-        Button buttonCon = findViewById(R.id.buttonCon);
-        Button buttonPros = findViewById(R.id.buttonPros);
-        Button buttonEven = findViewById(R.id.buttonEven);
-        Button buttonPoint = findViewById(R.id.buttonPoint);
+        Button but1 = findViewById(R.id.but1);
+        Button but2 = findViewById(R.id.but2);
+        Button but3 = findViewById(R.id.but3);
+        Button but4 = findViewById(R.id.but4);
+        Button but5 = findViewById(R.id.but5);
+        Button but6 = findViewById(R.id.but6);
+        Button but7 = findViewById(R.id.but7);
+        Button but8 = findViewById(R.id.but8);
+        Button but9 = findViewById(R.id.but9);
+        Button but0 = findViewById(R.id.but0);
+        Button butClear = findViewById(R.id.butClear);
+        Button butDivision = findViewById(R.id.butDivision);
+        Button butMultiplication = findViewById(R.id.butMultiplication);
+        Button butDelete = findViewById(R.id.butDelete);
+        Button butCon = findViewById(R.id.butCon);
+        Button butPros = findViewById(R.id.butPros);
+        Button butEven = findViewById(R.id.butEven);
+        Button butPoint = findViewById(R.id.butPoint);
         tvResult = findViewById(R.id.tvResult);
         setTvResult();
 
-        button1.setOnClickListener(button1ClickListener);
-        button2.setOnClickListener(button2ClickListener);
-        button3.setOnClickListener(button3ClickListener);
-        button4.setOnClickListener(button4ClickListener);
-        button5.setOnClickListener(button5ClickListener);
-        button6.setOnClickListener(button6ClickListener);
-        button7.setOnClickListener(button7ClickListener);
-        button8.setOnClickListener(button8ClickListener);
-        button9.setOnClickListener(button9ClickListener);
-        button0.setOnClickListener(button0ClickListener);
-        buttonClear.setOnClickListener(buttonClearClickListener);
-        buttonDivision.setOnClickListener(buttonDivisionClickListener);
-        buttonMultiplication.setOnClickListener(buttonMultiplicationClickListener);
-        buttonDelete.setOnClickListener(buttonDeleteClickListener);
-        buttonCon.setOnClickListener(buttonConClickListener);
-        buttonPros.setOnClickListener(buttonProsClickListener);
-        buttonEven.setOnClickListener(buttonEvenClickListener);
-        buttonPoint.setOnClickListener(buttonPointClickListener);
+        but1.setOnClickListener(button1ClickListener);
+        but2.setOnClickListener(button2ClickListener);
+        but3.setOnClickListener(button3ClickListener);
+        but4.setOnClickListener(button4ClickListener);
+        but5.setOnClickListener(button5ClickListener);
+        but6.setOnClickListener(button6ClickListener);
+        but7.setOnClickListener(button7ClickListener);
+        but8.setOnClickListener(button8ClickListener);
+        but9.setOnClickListener(button9ClickListener);
+        but0.setOnClickListener(button0ClickListener);
+        butClear.setOnClickListener(buttonClearClickListener);
+        butDivision.setOnClickListener(buttonDivisionClickListener);
+        butMultiplication.setOnClickListener(buttonMultiplicationClickListener);
+        butDelete.setOnClickListener(buttonDeleteClickListener);
+        butCon.setOnClickListener(buttonConClickListener);
+        butPros.setOnClickListener(buttonProsClickListener);
+        butEven.setOnClickListener(buttonEvenClickListener);
+        butPoint.setOnClickListener(buttonPointClickListener);
 
         mItMoveToTest = new Intent(this, SettingsActivity.class);
 
@@ -368,11 +371,21 @@ class Calculator<param> extends AppCompatActivity {
         }
     };
 
-    private void setTvResult(String s) {
+    private void addCharToText (String but){
+        if (tvResult.getText() == "0") {
+            setTvResult(but);
+        } else {
+            setTvResult(tvResult.getText() + but);
+        }
+    };
+
+    private void setTvResult (String text){
+        tvResultText = text;
+        tvResult.setText(text);
     }
 
-    private void addCharToText(String s) {
-    }
+
+
 
     private String splitZero(String resultText) {
         boolean exist0 = false;
@@ -392,38 +405,25 @@ class Calculator<param> extends AppCompatActivity {
         return resultText;
     }
 
-    private void addCharToParam(String button) {
+    private void addCharToParam(String but) {
         if (tvResultText.contains("=")) {
             initCalc();
         }
         if (mOperation == '!') {
             return;
         } else if (mOperation == ' ') {
-            if ((!button.equals(".") || !mFirst.contains(".")) && mFirst.length() < 15) {
-                if (mFirst.length() == 0 && button.equals(".")) button = "0" + button;
-                mFirst += button;
-                addCharToText(button);
+            if ((!but.equals(".") || !mFirst.contains(".")) && mFirst.length() < 15) {
+                if (mFirst.length() == 0 && but.equals(".")) but = "0" + but;
+                mFirst += but;
+                addCharToText(but);
             }
         } else {
-            if ((!button.equals(".") || !mSecond.contains(".")) && mSecond.length() < 15) {
-                if (mSecond.length() == 0 && button.equals(".")) button = "0" + button;
-                mSecond += button;
-                addCharToText(button);
+            if ((!but.equals(".") || !mSecond.contains(".")) && mSecond.length() < 15) {
+                if (mSecond.length() == 0 && but.equals(".")) but = "0" + but;
+                mSecond += but;
+                addCharToText(but);
             }
-        }
-
-        private void addCharToText (String button){
-            if (tvResult.getText() == "0") {
-                setTvResult(button);
-            } else {
-                setTvResult(tvResult.getText() + button);
-            }
-        }
-
-        private void setTvResult (String text){
-            tvResultText = text;
-            tvResult.setText(text);
-        }
+        };
 
     }
 
@@ -436,11 +436,15 @@ class Calculator<param> extends AppCompatActivity {
     }
 
     private int getAppTheme(int codeStyle) {
-        return SettingsActivity.codeStyleToStyleId(getCodeStyle(codeStyle));
+        return codeStyleToStyleId(getCodeStyle(NameSharedPreference, codeStyle));
     }
 
-    private int getCodeStyle(int codeStyle) {
+    private int codeStyleToStyleId(int codeStyle) {
+        return codeStyle;
+    }
+
+    private int getCodeStyle(String NameSharedPreference, int codeStyle) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
-        return sharedPref.getInt(appTheme, codeStyle);
+        return sharedPref.getInt(AppTheme, codeStyle);
     }
 }
