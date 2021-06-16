@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="version_names">
+        <item>v1</item>
+        <item>v2</item>
+        <item>v3</item>
+    </string-array>
+
+</resources>

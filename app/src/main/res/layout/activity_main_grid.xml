@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clickable="false"
+    android:columnCount="4"
+    android:orientation="horizontal"
+    android:rowCount="5">
+
+    <!--suppress AndroidMissingOnClickHandler -->
+    <Button
+        android:id="@+id/butClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CalcKeySquare"
+        android:text="@string/c"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonClearClickListener"/>
+
+    <Button
+        android:id="@+id/butDivision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Division"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonDivisionClickListener"/>
+
+    <Button
+        android:id="@+id/butMultiplication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Multiplication"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonMultiplicationClickListener"/>
+
+    <Button
+        android:id="@+id/butDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/del"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonDeleteClickListener"/>
+
+    <Button
+        android:id="@+id/but7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_7"
+        android:textSize="@dimen/dimen"
+        android:onClick="button7ClickListener"/>
+
+    <Button
+        android:id="@+id/but8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_8"
+        android:textSize="@dimen/dimen"
+        android:onClick="button8ClickListener"/>
+
+    <Button
+        android:id="@+id/but9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_9"
+        android:textSize="@dimen/dimen"
+        android:onClick="button9ClickListener"/>
+
+    <Button
+        android:id="@+id/butCon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Con"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonConClickListener"/>
+
+    <Button
+        android:id="@+id/but4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_4"
+        android:textSize="@dimen/dimen"
+        android:onClick="button4ClickListener"/>
+
+    <Button
+        android:id="@+id/but5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_5"
+        android:textSize="@dimen/dimen"
+        android:onClick="button5ClickListener"/>
+
+    <Button
+        android:id="@+id/but6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_6"
+        android:textSize="@dimen/dimen"
+        android:onClick="button6ClickListener"/>
+
+    <Button
+        android:id="@+id/butPros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Pros"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonProsClickListener"/>
+
+    <Button
+        android:id="@+id/but1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_1"
+        android:textSize="@dimen/dimen"
+        android:onClick="button1ClickListener"/>
+
+    <Button
+        android:id="@+id/but2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_2"
+        android:textSize="@dimen/dimen"
+        android:onClick="button2ClickListener"/>
+
+    <Button
+        android:id="@+id/but3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_3"
+        android:textSize="@dimen/dimen"
+        android:onClick="button3ClickListener"/>
+
+    <Button
+        android:id="@+id/butEven"
+        android:layout_width="wrap_content"
+        android:layout_height="105dp"
+        android:layout_row="3"
+        android:layout_column="3"
+        android:layout_rowSpan="2"
+        android:text="@string/Even"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonEvenClickListener"/>
+
+    <Button
+        android:id="@+id/but0"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:text="@string/_0"
+        android:textSize="@dimen/dimen"
+        android:onClick="button0ClickListener"/>
+
+    <Button
+        android:id="@+id/butPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Point"
+        android:textSize="@dimen/dimen"
+        android:onClick="buttonPointClickListener"/>
+
+</GridLayout>

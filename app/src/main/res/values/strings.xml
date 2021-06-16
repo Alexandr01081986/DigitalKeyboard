@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">Digital Keyboard</string>
+    <string name="app_name" translatable="false">Digital Keyboard</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="_3" translatable="false">3</string>
+    <string name="_4" translatable="false">4</string>
+    <string name="_5" translatable="false">5</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="_7" translatable="false">7</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="_9" translatable="false">9</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="Point" translatable="false">,</string>
+    <string name="Pros" translatable="false">+</string>
+    <string name="Con" translatable="false">-</string>
+    <string name="Multiplication" translatable="false">*</string>
+    <string name="Division" translatable="false">/</string>
+    <string name="Even" translatable="false">=</string>
+    <string name="Percent" translatable="false">%</string>
+    <string name="c" translatable="false">C</string>
+    <string name="del" translatable="false">Del</string>
+    <string name="editResultCalc" translatable="false">"0 "</string>
+    <string name="btnMoveToTest" translatable="false">Перейти в настройки</string>
+    <string name="material_black" translatable="false">Черная</string>
+    <string name="material_red" translatable="false">Красная</string>
+    <string name="material_default" translatable="false">Тема по умолчанию</string>
+    <string name="material_blue" translatable="false">Синяя</string>
+    <string name="not_name" translatable="false">Некорректные символы.</string>
+    <string name="tvSettingsCalc" translatable="false">Настройки темы калькулятора:</string>
+    <string name="btnSave" translatable="false">Сохранить настройки</string>
 </resources>
