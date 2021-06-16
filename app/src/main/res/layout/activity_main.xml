@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calculator">
+    tools:context=".MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -13,7 +13,8 @@
         android:id="@+id/imageView"
         android:scaleType="fitXY"
         android:alpha="1"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/ic_launcher_background"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:orientation="vertical"

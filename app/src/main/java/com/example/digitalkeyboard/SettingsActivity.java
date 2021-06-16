@@ -29,12 +29,12 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        codeToSave = getCodeStyle(GenericPreference, 0);
-        if (codeToSave != getCodeStyle(SettingsPreference, 0)) {
-            codeToSave = getCodeStyle(SettingsPreference, 0);
-            setTheme(getAppTheme(SettingsPreference, 0));
+        codeToSave = getCodeStyle(GenericPreference);
+        if (codeToSave != getCodeStyle(SettingsPreference)) {
+            codeToSave = getCodeStyle(SettingsPreference);
+            setTheme(getAppTheme(SettingsPreference));
         } else {
-            setTheme(getAppTheme(GenericPreference, 0));
+            setTheme(getAppTheme(GenericPreference));
         }
 
         setContentView(R.layout.activity_settings);
@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
             saveTheme(SettingsPreference, codeToSave);
             saveTheme(GenericPreference, codeToSave);
             Intent result = new Intent();
-            result.putExtra(Calculator.U_NAME, "ok");
+            result.putExtra(MainActivity.U_NAME, "ok");
             setResult(RESULT_OK, result);
             finish();
         });
@@ -57,14 +57,14 @@ public class SettingsActivity extends AppCompatActivity {
         Log.e(NAME_ACTIVITY, "onDestroy() ");
     }
 
-    private int getAppTheme(String NameSharedPreference, int codeStyle) {
-        return codeStyleToStyleId(getCodeStyle(NameSharedPreference, codeStyle));
+    private int getAppTheme(String NameSharedPreference) {
+        return codeStyleToStyleId(getCodeStyle(NameSharedPreference));
     }
 
 
-    private int getCodeStyle(String NameSharedPreference, int codeStyle) {
+    private int getCodeStyle(String NameSharedPreference) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
-        return sharedPref.getInt(AppTheme, codeStyle);
+        return sharedPref.getInt(AppTheme, 0);
     }
 
 
@@ -78,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(AppTheme, codeStyle);
-        editor.commit();
+        editor.apply();
     }
 
     public static int codeStyleToStyleId(int codeStyle) {
@@ -106,8 +106,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initRadioButton(View button, final int codeStyle) {
-        button.setOnClickListener(v -> {
-            setAppTheme(codeStyle);
-        });
+        button.setOnClickListener(v -> setAppTheme(codeStyle));
     }
 }

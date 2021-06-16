@@ -11,10 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Locale;
 
 @SuppressWarnings("ALL")
-class Calculator<param> extends AppCompatActivity {
+public class MainActivity<param> extends AppCompatActivity {
 
     public static final String NAME = "Calculator";
     public static final String FIRST = NAME + ".mFirst";
@@ -383,9 +382,6 @@ class Calculator<param> extends AppCompatActivity {
         tvResultText = text;
         tvResult.setText(text);
     }
-
-
-
 
     private String splitZero(String resultText) {
         boolean exist0 = false;

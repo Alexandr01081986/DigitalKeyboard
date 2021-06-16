@@ -1,20 +1,10 @@
 package com.example.digitalkeyboard;
 
 import android.content.SharedPreferences;
-import android.content.res.TypedArray;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.AppCompatImageView;
-import com.google.android.material.radiobutton.MaterialRadioButton;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.regex.Pattern;
 
 @SuppressWarnings("ALL")
 public class LoginActivity<TextInputEditText, MaterialRadioButton> extends AppCompatActivity {
